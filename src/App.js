@@ -13,23 +13,24 @@ const App = () => {
   
 
   var [score,setScore] = useState(0)
+  // var s = 0
   
 
   const handleClick = (value) => {
     setUserChoice(value) 
     randomComputerChoice()
   }
-  const scoreIncrease = (() => {
-    score=score+1
+  // const scoreIncrease = (() => {
+  //   score=score+1
     
-    if(score >=5)
-    {
-      setScore('done for the day')
-    }
-    else{
-      setScore(score)
-    }
-  },[score])
+  //   if(score >=5)
+  //   {
+  //     setScore('done for the day')
+  //   }
+  //   else{
+  //     setScore(score)
+  //   }
+  // },[score])
   
 
   const randomComputerChoice = () => {
@@ -38,9 +39,18 @@ const App = () => {
     setComputerChoice(randomChoice)
     
   }
-
+ 
   useEffect(() => {
-    
+
+    const scoreIncrease = () => {
+      
+      //eslint-disable-next-line
+      score+=1
+      
+      setScore(score)
+      
+    }
+
     switch (userChoice +' '+ computerChoice) {
       case 'scissor paper':
       case 'rock scissor':
@@ -61,7 +71,7 @@ const App = () => {
       default:
         break
     }
-  }, [computerChoice, userChoice,score,scoreIncrease])
+  }, [computerChoice, userChoice])
 
   return (
     
