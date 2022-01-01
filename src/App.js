@@ -19,7 +19,7 @@ const App = () => {
     setUserChoice(value) 
     randomComputerChoice()
   }
-  const scoreIncrease = () => {
+  const scoreIncrease = (() => {
     score=score+1
     
     if(score >=5)
@@ -29,7 +29,7 @@ const App = () => {
     else{
       setScore(score)
     }
-  }
+  },[score])
   
 
   const randomComputerChoice = () => {
@@ -40,6 +40,7 @@ const App = () => {
   }
 
   useEffect(() => {
+    
     switch (userChoice +' '+ computerChoice) {
       case 'scissor paper':
       case 'rock scissor':
@@ -60,7 +61,7 @@ const App = () => {
       default:
         break
     }
-  }, [computerChoice, userChoice])
+  }, [computerChoice, userChoice,score,scoreIncrease])
 
   return (
     
